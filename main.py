@@ -38,8 +38,6 @@ def video():
 
 @app.route("/search")
 def search():
-    if not(check_cokie()):
-        return abort(404)
     q = request.args.get("q")
     response = make_response(render_template("search.html",results=get_search(q)))
     response.set_cookie("yuki",value="True",expires=time.time() + 60 * 60 * 24 * 7)
